@@ -1,15 +1,31 @@
 <div class="container">
-  <h1><%= @cocktail.name %></h1>
 
-  <% @cocktail.doses.each do |dose| %>
-    <%= dose.ingredient.name %>
-    <%= dose.description %>
-  <% end %>
+  <%= link_to 'Home', cocktails_path %>
+
+  <br>
+
+  <div class="banner-title">
+    <h1><%= @cocktail.name %></h1>
+    <%= link_to(edit_cocktail_path(@cocktail), html_options = {}) do %>
+      <i class="far fa-edit"></i>
+    <% end %>
+  </div>
+
+  <br>
+
+  <ol>
+    <% @cocktail.doses.each do |dose| %>
+      <li>
+        <%= dose.ingredient.name %>
+        <%= dose.description %>
+      </li>
+    <% end %>
+  </ol>
 
   <br>
   <br>
-  <br>
 
-  <%= link_to 'Edit', edit_cocktail_path(@cocktail) %>
+  <%= link_to 'Add a new dose', new_cocktail_dose_path(@cocktail) %>
+
 </div>
 
